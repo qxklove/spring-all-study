@@ -1,4 +1,4 @@
-package com.qxk.springconfig.bean;
+package com.qxk.springall.springbootconfig.bean;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

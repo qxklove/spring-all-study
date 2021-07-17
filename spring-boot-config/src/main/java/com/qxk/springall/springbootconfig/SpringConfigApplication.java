@@ -1,7 +1,7 @@
-package com.qxk.springconfig;
+package com.qxk.springall.springbootconfig;
 
-import com.qxk.springconfig.bean.ConfigBean;
-import com.qxk.springconfig.bean.CustomConfigBean;
+import com.qxk.springall.springbootconfig.bean.ConfigBean;
+import com.qxk.springall.springbootconfig.bean.CustomConfigBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
