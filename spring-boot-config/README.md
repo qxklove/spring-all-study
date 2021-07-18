@@ -1,4 +1,4 @@
-# Spring Boot一些基础配置
+# Spring Boot 配置
 <https://mrbird.cc/Spring-Boot%20basic%20config.html>
 
 ## 1.定制Banner

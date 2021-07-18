@@ -1,11 +1,19 @@
 server:
-  port: 80
+  port: 8080
 
 management:
-  security:
-    enabled: false #关掉安全认证。如果需要开启这个功能的话还需引入spring-boot-starter-security依赖。除了使用Spring Security来开启监控路径安全认证外，还可以使用Shiro对监控路径进行权限控制。
-  port: 80 #监控的端口和应用一致
-  context-path: /monitor #actuator的访问路径
-endpoints:
-  shutdown:
-    enabled: true #提供了使用post请求来关闭Spring Boot应用的功能
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include: ["*"] #开启全部端点相关代码
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true #提供了使用post请求来关闭Spring Boot应用的功能
+
+info:
+  app:
+    encoding: UTF-8
+    jdk: 1.8
