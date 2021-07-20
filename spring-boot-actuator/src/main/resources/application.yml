@@ -2,11 +2,15 @@ server:
   port: 8080
 
 management:
+  server:
+    port: 8081 #通过8081才能访问actuator
   endpoints:
     web:
       base-path: /monitor
       exposure:
         include: ["*"] #开启全部端点相关代码
+      path-mapping:
+        health: ok #把health改成ok
   endpoint:
     health:
       show-details: always

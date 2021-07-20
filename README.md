@@ -8,4 +8,5 @@
 * spring-boot-actuator：SpringBoot监控
 
 ## 参考：
-<https://github.com/wuyouzhuguli/SpringAll>，基于Spring Boot 1.5.9.RELEASE
+<https://github.com/wuyouzhuguli/SpringAll>，基于Spring Boot 1.5.9.RELEASE  
+[极客时间-玩转Spring全家桶](https://time.geekbang.org/course/intro/100023501)

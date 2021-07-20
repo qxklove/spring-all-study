@@ -1,5 +1,4 @@
 # Spring Boot 配置
-<https://mrbird.cc/Spring-Boot%20basic%20config.html>
 
 ## 1.定制Banner
 在src/main/resources目录下新建banner.txt文件，然后将自己的图案黏贴进去即可。
@@ -70,3 +69,6 @@ Profile用来针对不同的环境下使用不同的配置文件。
     public void setStaticConfig(String staticConfig) {
         StaticConfigBean.staticConfig = staticConfig;
     }
+
+## 参考
+<https://mrbird.cc/Spring-Boot%20basic%20config.html>

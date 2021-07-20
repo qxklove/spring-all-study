@@ -10,7 +10,7 @@ Spring Boot Actuator可以用来监控和管理Spring Boot应用，比如健康�
     </dependency>
 
 ## 端点及其作用
-使用前缀/actuator/加上端点来访问获取描述。例如在默认情况下，health端点映射到/actuator/health。  
+使用/actuator/{端点}来访问获取描述。例如在默认情况下，health端点映射到/actuator/health。  
 /actuator可以看到所有支持的端点。
 * /auditevents：显示当前应用程序的审计事件信息，需要一个AuditEventRepository Bean
 * /beans：显示一个应用中所有Spring Beans的完整列表
@@ -39,24 +39,35 @@ Spring Boot Actuator可以用来监控和管理Spring Boot应用，比如健康�
 * /prometheus：以可以被Prometheus服务器抓取的格式显示metrics信息
 
 ## 一些配置（对于HTTP endpoints）
+
+可以配置actuator专用的端口，来控制其访问
+> management.server.address =  
+> management.server.port =
+
 设置监控访问的应用根路径，默认是/actuator
 > management.endpoints.web.base-path=/monitor
 
-默认情况下，除shutdown以外的所有端点均已启用。要配置单个端点的启用，请使用management.endpoint.<id>.enabled属性。
+重新设置端点的映射值
+> management.endpoints.web.path-mapping.<id> = 路径
+
+默认情况下，除shutdown以外的所有端点均已启用。要配置单个端点的启用，请使用`management.endpoint.<id>.enabled`属性。
 > management.endpoint.shutdown.enabled=true #启用shutdown端点
 
-可以通过management.endpoints.enabled-by-default来修改全局端口默认配置。
-> /#启用info端点并禁用其他端点
-> management.endpoints.enabled-by-default=false
+可以通过`management.endpoints.enabled-by-default`来修改全局端口默认配置。
+> \#启用info端点并禁用其他端点  
+> management.endpoints.enabled-by-default=false  
 > management.endpoint.info.enabled=true
 
-可以注意到management.endpoints是配置全局用的，management.endpoint则针对单个端点配置。  
-禁用的端点将从应用程序上下文中完全删除。如果只想更改端点公开(对外暴露)的技术，请改为使用include和exclude属性。
-默认只暴露了health端点。
-> management.endpoints.web.exposure.include: ["*"] #暴露全部端点
+可以注意到management.endpoints是配置全局用的，management.endpoint则针对单个端点配置。
+
+禁用的端点将从应用程序上下文中完全删除。如果只想更改端点公开（对外暴露）的技术，请改为使用`include`和`exclude`属性。  
+**默认只暴露了health端点。**
+> management.endpoints.web.exposure.include=["*"] #暴露全部端点  
 > management.endpoints.web.exposure.exclude=env,beans #不公开env和beans端点
 
 同一端点ID同时出现在include属性和exclude属性里,exclude属性优先于include属性。
+
+
 
 ## 几个常用端点
 ### 1.health端点
@@ -66,7 +77,8 @@ health端点是查看Spring Boot应用程序健康状况的端点，如果没有
 * when-authorized：细节详情只对授权用户显示
 * always：细节详情显示给所有用户
 
-health端点的内容是从实现HealthIndicator接口的bean中收集来的。可以实现自己的HealthIndicator：
+health端点的内容是从实现HealthIndicator接口的bean中收集来的。  
+可以实现自己的HealthIndicator，然后自定义检查逻辑并返回对应Health状态，Health中包含状态和详细描述信息。
 
     @Component
     public class MyHealthIndicator implements HealthIndicator {
@@ -122,5 +134,5 @@ health端点的内容是从实现HealthIndicator接口的bean中收集来的。�
 
 
 ## 参考
-[官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
+[官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)  
 <https://blog.csdn.net/u012364631/article/details/94019429>
