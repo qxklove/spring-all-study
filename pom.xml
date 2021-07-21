@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.2</version>
+		<version>2.3.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.qxk.springall</groupId>
@@ -18,13 +18,19 @@
 	</properties>
 	<packaging>pom</packaging>
 
+	<modules>
+		<module>spring-boot-config</module>
+		<module>spring-boot-actuator</module>
+		<module>spring-boot-datasource</module>
+	</modules>
+
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->
 <!--	<dependencyManagement>-->
 <!--		<dependencies>-->
 <!--			<dependency>-->
 <!--				<groupId>org.springframework.boot</groupId>-->
 <!--				<artifactId>spring-boot-dependencies</artifactId>-->
-<!--				<version>2.5.2</version>-->
+<!--				<version>2.3.7.RELEASE</version>-->
 <!--				<type>pom</type>-->
 <!--				<scope>import</scope>-->
 <!--			</dependency>-->
@@ -49,6 +55,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.3.7.RELEASE</version>
+				<executions>
+					<execution>
+						<id>repackage</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

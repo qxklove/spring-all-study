@@ -1,7 +1,7 @@
 # Spring相关的学习
 
 本项目基于版本
-* Spring Boot：2.5.2
+* Spring Boot：2.3.7.RELEASE
 
 ## 目录
 * spring-boot-config：SpringBoot配置

@@ -48,7 +48,7 @@ Spring Boot Actuator可以用来监控和管理Spring Boot应用，比如健康�
 > management.endpoints.web.base-path=/monitor
 
 重新设置端点的映射值
-> management.endpoints.web.path-mapping.<id> = 路径
+> management.endpoints.web.path-mapping.<id\> = 路径
 
 默认情况下，除shutdown以外的所有端点均已启用。要配置单个端点的启用，请使用`management.endpoint.<id>.enabled`属性。
 > management.endpoint.shutdown.enabled=true #启用shutdown端点
@@ -61,7 +61,7 @@ Spring Boot Actuator可以用来监控和管理Spring Boot应用，比如健康�
 可以注意到management.endpoints是配置全局用的，management.endpoint则针对单个端点配置。
 
 禁用的端点将从应用程序上下文中完全删除。如果只想更改端点公开（对外暴露）的技术，请改为使用`include`和`exclude`属性。  
-**默认只暴露了health端点。**
+**默认只暴露了health和info端点。**
 > management.endpoints.web.exposure.include=["*"] #暴露全部端点  
 > management.endpoints.web.exposure.exclude=env,beans #不公开env和beans端点
 
