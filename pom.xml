@@ -22,6 +22,7 @@
 		<module>spring-boot-config</module>
 		<module>spring-boot-actuator</module>
 		<module>spring-boot-datasource</module>
+		<module>spring-boot-multi-datasource</module>
 	</modules>
 
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->
