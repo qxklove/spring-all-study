@@ -8,21 +8,33 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.qxk.springall</groupId>
-    <artifactId>spring-boot-datasource</artifactId>
+    <artifactId>spring-boot-druid</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-datasource</name>
-    <description>Demo project for Spring Boot Datasource Config</description>
+    <name>spring-boot-druid</name>
+    <description>Demo project for Spring Boot Druid</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>HikariCP</artifactId>
+                    <groupId>com.zaxxer</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.10</version>
         </dependency>
     </dependencies>
 
