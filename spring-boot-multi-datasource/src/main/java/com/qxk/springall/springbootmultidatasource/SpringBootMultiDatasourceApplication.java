@@ -28,13 +28,11 @@ public class SpringBootMultiDatasourceApplication {
 
     @Bean
     @ConfigurationProperties("foo.datasource")
-    @Primary
     public DataSourceProperties fooDataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Bean
-    @Primary
     public DataSource fooDataSource() {
         DataSourceProperties dataSourceProperties = fooDataSourceProperties();
         log.info("foo datasource: {}", dataSourceProperties.getUrl());
@@ -43,7 +41,6 @@ public class SpringBootMultiDatasourceApplication {
 
     @Bean
     @Resource
-    @Primary
     public PlatformTransactionManager fooTxManager(DataSource fooDataSource) {
         return new DataSourceTransactionManager(fooDataSource);
     }
