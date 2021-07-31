@@ -26,6 +26,7 @@
 		<module>spring-boot-datasource</module>
 		<module>spring-boot-multi-datasource</module>
 		<module>spring-boot-druid</module>
+		<module>spring-boot-jdbc</module>
 	</modules>
 
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->
