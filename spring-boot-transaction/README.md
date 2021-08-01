@@ -1,7 +1,7 @@
 # Spring Boot 事务
 
 ## Spring的事务抽象
-###一致的事务模型
+### 一致的事务模型
 * JDBC/Hibernate/MyBatis
 * DataSource/JTA
 
@@ -30,19 +30,20 @@ TransactionTemplate
 PlatformTransactionManager：可以传入TransactionDefinition进行定义
 
 ### 声明式事务
-####基于注解的配置方式
+#### 基于注解的配置方式
 开启事务注解的方式
 * @EnableTransactionManagement
 * \<tx:annotation-driven/>
 
 一些配置
-* proxyTargetClass
+* proxyTargetClass：true/false
 * mode
-* order
-
+* order‘
+ 
 在需要的方法或类上加注解 @Transactional
 * propagation
 * isolation
 * timeout
 * readOnly
 * 怎么判断回滚
+  

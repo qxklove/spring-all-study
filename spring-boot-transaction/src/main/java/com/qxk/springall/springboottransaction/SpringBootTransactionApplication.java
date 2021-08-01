@@ -45,21 +45,30 @@ public class SpringBootTransactionApplication implements CommandLineRunner {
         /** 编程式事务end */
 
         /** 声明式事务start */
-        fooService.insertRecord();
-        log.info("AAA {}", jdbcTemplate.queryForObject("SELECT COUNT(*) FROM FOO WHERE BAR='AAA'", Long.class));
-
-        try {
-            fooService.insertThenRollback();
-        } catch (Exception e) {
-            log.info("BBB {}", jdbcTemplate.queryForObject("SELECT COUNT(*) FROM FOO WHERE BAR='BBB'", Long.class));
-        }
-
-        try {
-            fooService.invokeInsertThenRollback();
-        } catch (Exception e) {
-            log.info("BBB {}", jdbcTemplate.queryForObject("SELECT COUNT(*) FROM FOO WHERE BAR='BBB'", Long.class));
-        }
+//        fooService.insertRecord();
+//        log.info("AAA {}", jdbcTemplate.queryForObject("SELECT COUNT(*) FROM FOO WHERE BAR='AAA'", Long.class));
+//
+//        try {
+//            fooService.insertThenRollback();
+//        } catch (Exception e) {
+//            log.info("BBB {}", jdbcTemplate.queryForObject("SELECT COUNT(*) FROM FOO WHERE BAR='BBB'", Long.class));
+//        }
+//
+//        try {
+//            fooService.invokeInsertThenRollback();
+//        } catch (Exception e) {
+//            log.info("BBB {}", jdbcTemplate.queryForObject("SELECT COUNT(*) FROM FOO WHERE BAR='BBB'", Long.class));
+//        }
         /** 声明式事务end */
+
+        /** 测试一下nested事务传播方式 */
+        try {
+            fooService.invokeInsertThenRollbackNested();
+        } catch (Exception e) {
+
+        }
+        log.info("AAA {}", jdbcTemplate.queryForObject("select count(*) from foo where bar='AAA'", Long.class));
+        log.info("BBB {}", jdbcTemplate.queryForObject("select count(*) from foo where bar='BBB'", Long.class));
     }
 
     private long getCount() {
