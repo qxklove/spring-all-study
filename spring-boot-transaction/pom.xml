@@ -8,16 +8,21 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.qxk.springall</groupId>
-    <artifactId>spring-boot-actuator</artifactId>
+    <artifactId>spring-boot-transaction</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-actuator</name>
-    <description>Demo project for Spring Boot Actuator</description>
+    <name>spring-boot-transaction</name>
+    <description>Demo project for Spring Boot Transaction</description>
 
-<!--    <dependencies>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
-<!--        </dependency>-->
-<!--    </dependencies>-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
 
 </project>
