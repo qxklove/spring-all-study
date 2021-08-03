@@ -11,6 +11,7 @@
 * [spring-boot-druid](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-druid): SpringBoot配置Druid连接池
 * [spring-boot-jdbc](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-jdbc): SpringBoot使用Jdbc
 * [spring-boot-transaction](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-transaction): SpringBoot事务
+* [spring-boot-data-jpa](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-data-jpa): SpringBoot Data JPA
 
 ## 参考：
 [极客时间-玩转Spring全家桶](https://time.geekbang.org/course/intro/100023501)  
