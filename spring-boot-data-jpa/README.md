@@ -21,3 +21,23 @@
 ### 关系
 * @OneToOne、@OneToMany、@ManyToOne、@ManyToMany
 * @OrderBY
+
+## 通过Spring Data JPA操作数据库
+SpringBoot启动类加注解@EnableJpaRepositories，就会去发现有实现Repository<T, ID>相关接口的扩展
+
+### Repository<T, ID>相关接口
+* CrudRepository<T, ID>
+* PagingAndSortingRepository<T, Long>
+* JpaRepository<T, ID>
+
+### 定义查询
+* find...By.../read...By.../query...By.../get...By...
+* count...By...
+* ...OrderBy...[ASC/DESC]
+* And/Or/IgnoreCase
+* Top/First/Distinct
+
+### 分页查询
+* PagingAndSortingRepository<T, Long>
+* Pageable/Sort
+* Slice<T>/Page<T>
