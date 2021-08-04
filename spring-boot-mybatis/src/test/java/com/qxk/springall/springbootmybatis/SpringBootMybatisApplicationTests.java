@@ -1,4 +1,4 @@
-package com.example.springbootmybatis;
+package com.qxk.springall.springbootmybatis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

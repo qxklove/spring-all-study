@@ -12,7 +12,7 @@
 * [spring-boot-jdbc](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-jdbc): SpringBoot使用Jdbc
 * [spring-boot-transaction](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-transaction): SpringBoot事务
 * [spring-boot-data-jpa](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-data-jpa): SpringBoot Data JPA
-* [spring-boot-data-mybatis](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-data-mybatis): SpringBoot Mybatis
+* [spring-boot-mybatis](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-mybatis): SpringBoot Mybatis
 
 ## 参考：
 [极客时间-玩转Spring全家桶](https://time.geekbang.org/course/intro/100023501)  
