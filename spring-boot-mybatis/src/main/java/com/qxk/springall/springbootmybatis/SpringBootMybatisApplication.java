@@ -1,11 +1,13 @@
 package com.qxk.springall.springbootmybatis;
 
+import com.github.pagehelper.PageInfo;
 import com.qxk.springall.springbootmybatis.mapper.CoffeeMapper;
 import com.qxk.springall.springbootmybatis.mapper.CoffeeWithMyBatisGeneratorMapper;
 import com.qxk.springall.springbootmybatis.model.Coffee;
 import com.qxk.springall.springbootmybatis.model.CoffeeWithMyBatisGenerator;
 import com.qxk.springall.springbootmybatis.model.CoffeeWithMyBatisGeneratorExample;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.session.RowBounds;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.mybatis.generator.api.MyBatisGenerator;
@@ -19,6 +21,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,9 +30,9 @@ import java.util.List;
 @MapperScan("com.qxk.springall.springbootmybatis.mapper")
 @SpringBootApplication
 public class SpringBootMybatisApplication implements ApplicationRunner {
-    @Autowired
+    @Resource
     private CoffeeMapper coffeeMapper;
-    @Autowired
+    @Resource
     private CoffeeWithMyBatisGeneratorMapper coffeeWithMyBatisGeneratorMapper;
 
     public static void main(String[] args) {
@@ -38,9 +41,11 @@ public class SpringBootMybatisApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        testWithoutMyBatisGenerator();
-        //generateArtifacts();
-        playWithArtifacts();
+//        testWithoutMyBatisGenerator();
+        //myBatisGenerator生成代码
+//        generateArtifacts();
+//        playWithArtifacts();
+        testPageHelper();
     }
 
     private void testWithoutMyBatisGenerator() {
@@ -90,5 +95,25 @@ public class SpringBootMybatisApplication implements ApplicationRunner {
         example.createCriteria().andNameEqualTo("latte");
         List<CoffeeWithMyBatisGenerator> list = coffeeWithMyBatisGeneratorMapper.selectByExample(example);
         list.forEach(e -> log.info("selectByExample: {}", e));
+    }
+
+    private void testPageHelper() {
+        coffeeMapper.findAllWithRowBounds(new RowBounds(1, 3))
+                .forEach(c -> log.info("Page(1) Coffee {}", c));
+        coffeeMapper.findAllWithRowBounds(new RowBounds(2, 3))
+                .forEach(c -> log.info("Page(2) Coffee {}", c));
+
+        log.info("===================");
+
+        coffeeMapper.findAllWithRowBounds(new RowBounds(1, 0))
+                .forEach(c -> log.info("Page(1) Coffee {}", c));
+
+        log.info("===================");
+
+        coffeeMapper.findAllWithParam(1, 3)
+                .forEach(c -> log.info("Page(1) Coffee {}", c));
+        List<Coffee> list = coffeeMapper.findAllWithParam(2, 3);
+        PageInfo page = new PageInfo(list);
+        log.info("PageInfo: {}", page);
     }
 }
