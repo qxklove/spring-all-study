@@ -30,6 +30,7 @@
 		<module>spring-boot-transaction</module>
 		<module>spring-boot-data-jpa</module>
 		<module>spring-boot-mybatis</module>
+		<module>spring-boot-mongo</module>
 	</modules>
 
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->

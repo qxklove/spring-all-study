@@ -13,6 +13,7 @@
 * [spring-boot-transaction](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-transaction): SpringBoot事务
 * [spring-boot-data-jpa](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-data-jpa): SpringBoot Data JPA
 * [spring-boot-mybatis](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-mybatis): SpringBoot MyBatis
+* [spring-boot-mongo](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-mongo): SpringBoot Mongo
 
 ## 参考：
 [极客时间-玩转Spring全家桶](https://time.geekbang.org/course/intro/100023501)  
