@@ -47,7 +47,7 @@ JedisCluster
 * 优先读主，优先读从
 
 LettuceClientConfiguration  
-LettucePoolingClientConfiguration
+LettucePoolingClientConfiguration  
 LettuceClientConfigurationBuilderCustomizer
 
 ### RedisTemplate

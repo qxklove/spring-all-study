@@ -103,7 +103,7 @@ public class SpringBootRedisApplication implements ApplicationRunner {
         coffeeService.findAllCoffee().forEach(c -> log.info("Coffee {}", c.getName()));
     }
 
-    //加了redis的相关配置
+    //加了redis的相关配置properties
     public void testCacheWithRedis() throws Exception {
         log.info("Count: {}", coffeeService.findAllCoffee().size());
         for (int i = 0; i < 5; i++) {
@@ -114,6 +114,7 @@ public class SpringBootRedisApplication implements ApplicationRunner {
         log.info("Reading after refresh.");
         coffeeService.findAllCoffee().forEach(c -> log.info("Coffee {}", c.getName()));
     }
+
 
 
     @Autowired

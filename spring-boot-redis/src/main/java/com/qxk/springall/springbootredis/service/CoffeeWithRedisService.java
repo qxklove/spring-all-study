@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.exact;
 
 /**
- * \
+ * 用RedisTemplate或Repository操作redis
  *
  * @author laijianzhen
  * @date 2021/08/10
