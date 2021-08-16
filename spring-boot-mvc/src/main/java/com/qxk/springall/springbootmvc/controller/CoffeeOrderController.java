@@ -8,11 +8,8 @@ import com.qxk.springall.springbootmvc.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
@@ -23,7 +20,13 @@ public class CoffeeOrderController {
     @Autowired
     private CoffeeService coffeeService;
 
-    @PostMapping("/")
+    @GetMapping("/{id}")
+    public CoffeeOrder getOrder(@PathVariable("id") Long id) {
+        return orderService.get(id);
+    }
+
+    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public CoffeeOrder create(@RequestBody NewOrderRequest newOrder) {
         log.info("Receive new Order {}", newOrder);

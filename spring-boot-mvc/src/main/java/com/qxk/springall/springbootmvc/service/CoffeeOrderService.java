@@ -19,6 +19,10 @@ public class CoffeeOrderService {
     @Autowired
     private CoffeeOrderRepository orderRepository;
 
+    public CoffeeOrder get(Long id) {
+        return orderRepository.getOne(id);
+    }
+
     public CoffeeOrder createOrder(String customer, Coffee...coffee) {
         CoffeeOrder order = CoffeeOrder.builder()
                 .customer(customer)
