@@ -34,6 +34,7 @@
 		<module>spring-boot-redis</module>
 		<module>spring-boot-aop</module>
 		<module>spring-boot-mvc</module>
+		<module>spring-context-hierarchy</module>
 	</modules>
 
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->
