@@ -3,6 +3,7 @@ package com.qxk.springall.springbootmvc.service;
 import com.qxk.springall.springbootmvc.model.Coffee;
 import com.qxk.springall.springbootmvc.repository.CoffeeRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -36,5 +37,9 @@ public class CoffeeService {
 
     public Coffee getCoffee(String name) {
         return coffeeRepository.findByName(name);
+    }
+
+    public Coffee saveCoffee(String name, Money price) {
+        return coffeeRepository.save(Coffee.builder().name(name).price(price).build());
     }
 }
