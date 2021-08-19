@@ -38,11 +38,13 @@ public class CoffeeController {
         return coffeeService.getAllCoffee();
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET
+//            ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+    )
     @ResponseBody
     public Coffee getById(@PathVariable Long id) {
         Coffee coffee = coffeeService.getCoffee(id);
+        log.info("coffee:{}", coffee);
         return coffee;
     }
 
@@ -72,6 +74,13 @@ public class CoffeeController {
 //    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
 //        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
 //    }
+
+    @PostMapping(path = "/addCoffee", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Coffee addJsonCoffeeWithoutBindingResult(@Valid @RequestBody NewCoffeeRequest newCoffee) {
+        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
+    }
 
     /** 文件上传 */
     @PostMapping(path = "/batchAddCoffee", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

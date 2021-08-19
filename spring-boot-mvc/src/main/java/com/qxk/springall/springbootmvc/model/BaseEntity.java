@@ -19,7 +19,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
+//@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
 public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
