@@ -10,8 +10,10 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Controller
@@ -42,10 +45,12 @@ public class CoffeeController {
 //            ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
     @ResponseBody
-    public Coffee getById(@PathVariable Long id) {
+    public ResponseEntity<Coffee> getById(@PathVariable Long id) {
         Coffee coffee = coffeeService.getCoffee(id);
         log.info("coffee:{}", coffee);
-        return coffee;
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.maxAge(10, TimeUnit.SECONDS))
+                .body(coffee);
     }
 
     /** 注意和上面getAll路径一样但不会报错，应为加的params条件不同 */

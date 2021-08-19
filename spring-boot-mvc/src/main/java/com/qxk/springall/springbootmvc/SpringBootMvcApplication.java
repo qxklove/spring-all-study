@@ -25,6 +25,7 @@ public class SpringBootMvcApplication {
 
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jacksonBuilderCustomizer() {
-        return jacksonObjectMapperBuilder -> jacksonObjectMapperBuilder.indentOutput(true); //支持缩进
+        //支持缩进，浏览器输命令 curl http://localhost:8080/coffee/1 可查看效果
+        return jacksonObjectMapperBuilder -> jacksonObjectMapperBuilder.indentOutput(true);
     }
 }
