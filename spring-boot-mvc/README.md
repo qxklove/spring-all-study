@@ -73,4 +73,14 @@ ViewResolver 与 View 接⼝
     * spring.resources.cache.cachecontrol.max-age=时间
     * spring.resources.cache.cachecontrol.no-cache=true/false
     * spring.resources.cache.cachecontrol.s-max-age=时间，公共缓存时间
-    
+
+### SpringMVC的异常解析
+核心接⼝：HandlerExceptionResolver  
+实现类：
+* SimpleMappingExceptionResolver
+* DefaultHandlerExceptionResolver
+* ResponseStatusExceptionResolver
+* ExceptionHandlerExceptionResolver
+
+定义异常处理方法，方法上加注解：@ExceptionHandler  
+添加位置：@Controller/@RestController 或 @ControllerAdvice/@RestControllerAdvice 注解的类的方法上，前者的优先级高于后者

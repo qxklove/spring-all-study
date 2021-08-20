@@ -1,5 +1,6 @@
 package com.qxk.springall.springbootmvc.controller;
 
+import com.qxk.springall.springbootmvc.controller.exception.FormValidationException;
 import com.qxk.springall.springbootmvc.controller.request.NewCoffeeRequest;
 import com.qxk.springall.springbootmvc.model.Coffee;
 import com.qxk.springall.springbootmvc.service.CoffeeService;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -66,9 +68,8 @@ public class CoffeeController {
     public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee,
                             BindingResult result) {
         if (result.hasErrors()) {
-            // 这里先简单处理一下，后续讲到异常处理时会改
             log.warn("Binding Errors: {}", result);
-            return null;
+            throw new FormValidationException(result);
         }
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
@@ -80,12 +81,24 @@ public class CoffeeController {
 //        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
 //    }
 
-    @PostMapping(path = "/addCoffee", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/addJsonCoffee", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Coffee addJsonCoffeeWithoutBindingResult(@Valid @RequestBody NewCoffeeRequest newCoffee) {
+    public Coffee addJsonCoffee(@Valid @RequestBody NewCoffeeRequest newCoffee,
+                                BindingResult result) {
+        if (result.hasErrors()) {
+            log.warn("Binding Errors: {}", result);
+            throw new ValidationException(result.toString());
+        }
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
+
+//    @PostMapping(path = "/addJsonCoffee", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//    @ResponseBody
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Coffee addJsonCoffeeWithoutBindingResult(@Valid @RequestBody NewCoffeeRequest newCoffee) {
+//        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
+//    }
 
     /** 文件上传 */
     @PostMapping(path = "/batchAddCoffee", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
