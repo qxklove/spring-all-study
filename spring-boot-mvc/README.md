@@ -84,3 +84,16 @@ ViewResolver 与 View 接⼝
 
 定义异常处理方法，方法上加注解：@ExceptionHandler  
 添加位置：@Controller/@RestController 或 @ControllerAdvice/@RestControllerAdvice 注解的类的方法上，前者的优先级高于后者
+
+### SpringMVC的拦截器
+核⼼接⼝：HandlerInteceptor
+* boolean preHandle()，方法执行前
+* void postHandle()，方法执行结束后，视图呈现前
+* void afterCompletion()，视图呈现后
+  
+针对@ResponseBody和ResponseEntity的情况：ResponseBodyAdvice  
+针对异步请求的接⼝：AsyncHandlerInterceptor.afterConcurrentHandlingStarted()
+
+拦截器的配置⽅式  
+常规方法：WebMvcConfigurer.addInterceptors()  
+SpringBoot中的配置：创建一个带@Configuration的WebMvcConfigurer配置类，不能带@EnableWebMvc(想彻底自⼰控制MVC配置除外)
