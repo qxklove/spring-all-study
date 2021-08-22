@@ -1,7 +1,11 @@
 package com.qxk.springall.springbootrestful;
 
 import com.qxk.springall.springbootrestful.model.Coffee;
+import com.qxk.springall.springbootrestful.support.CustomConnectionKeepAliveStrategy;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +19,15 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
 import java.net.URI;
+import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @SpringBootApplication
@@ -36,11 +43,11 @@ public class SpringBootRestfulApplication implements ApplicationRunner {
                 .run(args);
     }
 
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-//		return new RestTemplate();
-        return builder.build();
-    }
+//    @Bean
+//    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+////		return new RestTemplate();
+//        return builder.build();
+//    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -80,4 +87,38 @@ public class SpringBootRestfulApplication implements ApplicationRunner {
         list.getBody().forEach(coffee -> log.info("Coffee: {}", coffee));
     }
 
+    //配置RequestFactory
+    @Bean
+    public HttpComponentsClientHttpRequestFactory requestFactory() {
+        PoolingHttpClientConnectionManager connectionManager =
+                new PoolingHttpClientConnectionManager(30, TimeUnit.SECONDS);
+        connectionManager.setMaxTotal(200);
+        connectionManager.setDefaultMaxPerRoute(20);
+
+        CloseableHttpClient httpClient = HttpClients.custom()
+                .setConnectionManager(connectionManager)
+                .evictIdleConnections(30, TimeUnit.SECONDS)
+                .disableAutomaticRetries()
+                // 有 Keep-Alive 认里面的值，没有的话永久有效
+                //.setKeepAliveStrategy(DefaultConnectionKeepAliveStrategy.INSTANCE)
+                // 换成自定义的
+                .setKeepAliveStrategy(new CustomConnectionKeepAliveStrategy())
+                .build();
+
+        HttpComponentsClientHttpRequestFactory requestFactory =
+                new HttpComponentsClientHttpRequestFactory(httpClient);
+
+        return requestFactory;
+    }
+
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+//		return new RestTemplate();
+
+        return builder
+                .setConnectTimeout(Duration.ofMillis(100))
+                .setReadTimeout(Duration.ofMillis(500))
+                .requestFactory(this::requestFactory)
+                .build();
+    }
 }
