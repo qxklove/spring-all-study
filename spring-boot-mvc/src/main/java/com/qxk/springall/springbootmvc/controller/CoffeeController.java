@@ -62,7 +62,7 @@ public class CoffeeController {
         return coffeeService.getCoffee(name);
     }
 
-    @PostMapping(path = "/addCoffee", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee,
@@ -81,7 +81,7 @@ public class CoffeeController {
 //        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
 //    }
 
-    @PostMapping(path = "/addJsonCoffee", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public Coffee addJsonCoffee(@Valid @RequestBody NewCoffeeRequest newCoffee,

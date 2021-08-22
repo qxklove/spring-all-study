@@ -97,3 +97,11 @@ ViewResolver 与 View 接⼝
 拦截器的配置⽅式  
 常规方法：WebMvcConfigurer.addInterceptors()  
 SpringBoot中的配置：创建一个带@Configuration的WebMvcConfigurer配置类，不能带@EnableWebMvc(想彻底自⼰控制MVC配置除外)
+
+补充，关于@EnableWebMvc  
+SpringMVC的自动配置在org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration这个类中，
+这个类有一个很关键的注解：@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)
+也就是当容器中没有WebMvcConfigurationSupport这个类时，SpringBoot给SpringMVC自动配置才会生效，
+而@EnableWebMvc这个注解上有一个很关键的注解：@Import(DelegatingWebMvcConfiguration.class)
+意味着一旦标注EnableWebMvc注解就会导入DelegatingWebMvcConfiguration类，而该类是WebMvcConfigurationSupport的子类。
+所以如果标注了@EnableWebMvc，则SpringBoot关于SpringMVC的相关配置会失效。
