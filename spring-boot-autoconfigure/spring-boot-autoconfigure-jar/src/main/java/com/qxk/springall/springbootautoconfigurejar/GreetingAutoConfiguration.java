@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class GreetingAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(GreetingApplicationRunner.class)
-    @ConditionalOnProperty(name = "greeting.enabled", havingValue = "true")
+    @ConditionalOnProperty(name = "greeting.enabled", havingValue = "true", matchIfMissing = true)
     public GreetingApplicationRunner greetingApplicationRunner() {
         return new GreetingApplicationRunner();
     }

@@ -14,6 +14,12 @@
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
+        <dependency>
+            <groupId>com.qxk.springall</groupId>
+            <artifactId>spring-boot-hello</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- 以下是基于Spring Boot的自动配置 -->
         <dependency>
             <groupId>com.qxk.springall</groupId>
@@ -21,9 +27,10 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!-- 以下是手工实现的自动配置 -->
         <dependency>
             <groupId>com.qxk.springall</groupId>
-            <artifactId>spring-boot-hello</artifactId>
+            <artifactId>spring-boot-autoconfigure-backport</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.qxk.springall.springbootautoconfigurejar.GreetingAutoConfiguration
