@@ -19,6 +19,7 @@
 * [spring-boot-aop](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-aop): SpringBoot aop
 * [spring-boot-mvc](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-mvc): SpringBoot mvc
 * [spring-boot-restful](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-restful): SpringBoot restful
+* [spring-boot-session](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-session): SpringBoot session
 
 ### Spring的一些解析示例
 * [spring-context-hierarchy](https://github.com/qxklove/spring-all-study/tree/master/spring-context-hierarchy): Spring上下文的层次结构
