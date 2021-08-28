@@ -14,26 +14,32 @@
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.qxk.springall</groupId>-->
+<!--            <artifactId>spring-boot-hello</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; 以下是基于Spring Boot的自动配置 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.qxk.springall</groupId>-->
+<!--            <artifactId>spring-boot-autoconfigure-jar</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; 以下是手工实现的自动配置 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.qxk.springall</groupId>-->
+<!--            <artifactId>spring-boot-autoconfigure-backport</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
+        <!-- 以下是通过自定义starter引入 -->
         <dependency>
             <groupId>com.qxk.springall</groupId>
-            <artifactId>spring-boot-hello</artifactId>
+            <artifactId>test-spring-boot-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-        <!-- 以下是基于Spring Boot的自动配置 -->
-        <dependency>
-            <groupId>com.qxk.springall</groupId>
-            <artifactId>spring-boot-autoconfigure-jar</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!-- 以下是手工实现的自动配置 -->
-        <dependency>
-            <groupId>com.qxk.springall</groupId>
-            <artifactId>spring-boot-autoconfigure-backport</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 </project>

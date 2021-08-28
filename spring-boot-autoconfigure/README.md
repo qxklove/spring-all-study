@@ -8,7 +8,7 @@
       * META-INF/spring.factories 
           * org.springframework.boot.autoconfigure.EnableAutoConfiguration
 
-* 条件注解
+条件注解
   * @Conditional
 * 类条件
   * @ConditionalOnClass
@@ -28,6 +28,25 @@
   * @ConditionalOnExpression
   * @ConditionalOnJava
   * @ConditionalOnJndi
+
+外化配置加载顺序
+1. 开启DevTools时，~/.spring-boot-devtools.properties
+2. 测试类上的@TestPropertySource注解
+3. @SpringBootTest#properties属性
+4. 命令行参数(--server.port=9000)
+5. SPRING_APPLICATION_JSON中的属性
+6. ServletConfig初始化参数
+7. ServletContext初始化参数
+8. java:comp/env中的JNDI属性
+9. System.getProperties()
+10. 操作系统环境变量
+11. random.*涉及到的RandomValuePropertySource
+12. jar包外部的application-{profile}.properties或.yml
+13. jar包内部的application-{profile}.properties或.yml
+14. jar包外部的application.properties或.yml
+15. jar包内部的application.properties或.yml
+16. @Configuration类上的@PropertySource
+17. SpringApplication.setDefaultProperties()设置的默认属性
 
 命令行加`--debug`会打印自动配置的判断结果
 
@@ -74,3 +93,11 @@ Spring的两个扩展点
   * BeanDefinitionRegistry.registerBeanDefinition()
     * GenericBeanDefinition
   * BeanFactory.registerSingleton()
+
+### 定制⾃己的starter依赖
+主要内容
+* autoconfigure模块，包含自动配置代码
+* starter模块，包含指向⾃动配置模块的依赖及其他相关依赖 
+* 命名方式：xxx-spring-boot-autoconfigure xxx-spring-boot-starter
+* 不要使用spring-boot作为依赖的前缀
+* 不要使用spring-boot的配置命名空间
