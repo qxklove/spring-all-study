@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.qxk.springall</groupId>
+        <artifactId>spring-all-study</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.qxk.springall</groupId>
+    <artifactId>spring-boot-autoconfigure</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-autoconfigure</name>
+    <description>Demo project for Spring Boot</description>
+
+    <dependencies>
+        <!-- 以下是基于Spring Boot的自动配置 -->
+        <dependency>
+            <groupId>com.qxk.springall</groupId>
+            <artifactId>spring-boot-autoconfigure-jar</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.qxk.springall</groupId>
+            <artifactId>spring-boot-hello</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
