@@ -21,6 +21,7 @@
 * [spring-boot-restful](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-restful): SpringBoot restful
 * [spring-boot-session](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-session): SpringBoot session
 * [spring-boot-autoconfigure](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-autoconfigure): SpringBoot autoconfigure
+* [spring-boot-admin](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-admin): SpringBoot admin
 
 ### Spring的一些解析示例
 * [spring-context-hierarchy](https://github.com/qxklove/spring-all-study/tree/master/spring-context-hierarchy): Spring上下文的层次结构

@@ -38,6 +38,7 @@
 		<module>spring-boot-restful</module>
 		<module>spring-boot-session</module>
 		<module>spring-boot-autoconfigure</module>
+		<module>spring-boot-admin</module>
 	</modules>
 
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->
