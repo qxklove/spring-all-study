@@ -1,4 +1,4 @@
-# Spring Boot MVC
+ # Spring Boot MVC
 
 ### 一个请求的大致处理流程
 1. 绑定一些 Attribute
@@ -105,3 +105,39 @@ SpringMVC的自动配置在org.springframework.boot.autoconfigure.web.servlet.We
 而@EnableWebMvc这个注解上有一个很关键的注解：@Import(DelegatingWebMvcConfiguration.class)
 意味着一旦标注EnableWebMvc注解就会导入DelegatingWebMvcConfiguration类，而该类是WebMvcConfigurationSupport的子类。
 所以如果标注了@EnableWebMvc，则SpringBoot关于SpringMVC的相关配置会失效。
+
+### Web容器
+可选容器列表
+* spring-boot-starter-tomcat
+* spring-boot-starter-jetty
+* spring-boot-starter-undertow
+* spring-boot-starter-reactor-netty
+
+修改容器配置
+* 端⼝
+  * server.port
+  * server.address
+* 压缩
+  * server.compression.enabled
+  * server.compression.min-response-size
+  * server.compression.mime-types
+* Tomcat特定配置
+  * server.tomcat.max-connections=10000
+  * server.tomcat.max-http-post-size=2MB
+  * server.tomcat.max-swallow-size=2MB
+  * server.tomcat.max-threads=200
+  * server.tomcat.min-spare-threads=10
+* 错误处理
+  * server.error.path=/error
+  * server.error.include-exception=false
+  * server.error.include-stacktrace=never
+  * server.error.whitelabel.enabled=true
+* 其他
+  * server.use-forward-headers
+  * server.servlet.session.timeout
+
+编程⽅式修改容器配置
+* WebServerFactoryCustomizer<T>
+  * TomcatServletWebServerFactory
+  * JettyServletWebServerFactory
+  * UndertowServletWebServerFactory

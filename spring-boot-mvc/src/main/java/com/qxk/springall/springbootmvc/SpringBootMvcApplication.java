@@ -5,10 +5,14 @@ import com.qxk.springall.springbootmvc.controller.PerformanceInteceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.Compression;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -17,7 +21,8 @@ import java.util.TimeZone;
 @EnableJpaRepositories
 @EnableCaching
 @SpringBootApplication
-public class SpringBootMvcApplication implements WebMvcConfigurer {
+public class SpringBootMvcApplication implements WebMvcConfigurer,
+        WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootMvcApplication.class, args);
@@ -41,5 +46,14 @@ public class SpringBootMvcApplication implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new PerformanceInteceptor())
                 .addPathPatterns("/coffee/**").addPathPatterns("/order/**");
+    }
+
+    //编程方式定制web容器
+    @Override
+    public void customize(TomcatServletWebServerFactory factory) {
+        Compression compression = new Compression();
+        compression.setEnabled(true);
+        compression.setMinResponseSize(DataSize.ofBytes(512));
+        factory.setCompression(compression);
     }
 }
