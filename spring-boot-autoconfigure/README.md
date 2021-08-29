@@ -101,3 +101,21 @@ Spring的两个扩展点
 * 命名方式：xxx-spring-boot-autoconfigure xxx-spring-boot-starter
 * 不要使用spring-boot作为依赖的前缀
 * 不要使用spring-boot的配置命名空间
+
+### 配置背后的PropertySource抽象
+添加PropertySource
+* \<context:property-placeholder>
+* PropertySourcesPlaceholderConfigurer
+* @PropertySource
+* @PropertySources
+
+SpringBoot中的@ConfigurationProperties，可以将属性绑定到结构化对象上，开启@EnableConfigurationProperties
+
+定制PropertySource
+* 主要步骤
+  * 实现 PropertySource<T>
+  * 从Environment取得PropertySources
+  * 将⾃己的PropertySource添加到合适的位置
+* 切入位置
+  * EnvironmentPostProcessor
+  * BeanFactoryPostProcessor
