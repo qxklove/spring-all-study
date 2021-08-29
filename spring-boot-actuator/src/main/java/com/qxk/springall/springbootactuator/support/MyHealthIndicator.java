@@ -1,4 +1,4 @@
-package com.qxk.springall.springbootactuator.bean;
+package com.qxk.springall.springbootactuator.support;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.health.Health;

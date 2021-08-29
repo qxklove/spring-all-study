@@ -36,7 +36,7 @@ Spring Boot Actuator可以用来监控和管理Spring Boot应用，比如健康�
 * /heapdump：返回一个GZip压缩的hprof堆转储文件
 * /jolokia：通过HTTP暴露JMX beans（当Jolokia在类路径上时，不适用于WebFlux）
 * /logfile：返回日志文件内容（如果设置了logging.file.name或logging.file.path属性），支持使用HTTP Range头检索日志文件内容的部分信息
-* /prometheus：以可以被Prometheus服务器抓取的格式显示metrics信息
+* /prometheus：以可以被Prometheus服务器抓取的格式显示metrics信息，需要加prometheus依赖
 
 ## 一些配置（对于HTTP endpoints）
 
@@ -134,6 +134,39 @@ health端点的内容是通过HealthIndicatorRegistry从实现HealthIndicator接
 通过/actuator/metrics端点可以获取所有的指标名称，要获取具体的指标值，只需要用端点`/actuator/metrics/{metricName}  `
 比如：/actuator/metrics/http.server.requests获取到请求的相关指标信息，还可以指定要具体哪个请求的：/actuator/metrics/http.server.requests?tag=uri:/请求路径
 
+## Micrometer
+### 特性
+* 多维度度量，⽀持Tag
+* 预置⼤量探针，缓存、类加载器、GC、CPU利用率、线程池......
+* 与Spring深度整合
+* 支持多种监控系统，prometheus
+
+### 一些核心度量指标
+核⼼接⼝：Meter  
+内置实现：
+* Gauge,TimeGauge
+* Timer,LongTaskTimer,FunctionTimer
+* Counter,FunctionCounter
+* DistributionSummary
+
+一些URL
+* /actuator/metrics
+* /actuator/prometheus
+
+一些配置项
+* management.metrics.export.*
+* management.metrics.tags.*
+* management.metrics.enable.*
+* management.metrics.distribution.*
+* management.metrics.web.server.auto-time-requests
+
+核心度量项：JVM、CPU、⽂文件句句柄数、⽇日志、启动时间  
+其他度量项 ：Spring MVC、Spring WebFlux，Tomcat、Jersey，JAX-RS，RestTemplate、WebClient，缓存、数据源、Hibernate，Kafka、RabbitMQ
+
+### ⾃定义度量指标
+* 通过MeterRegistry注册Meter
+* 提供实现MeterBinder接口的Bean让SpringBoot自动绑定
+* 通过MeterFilter进行定制
 
 ## 参考
 [官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)  
