@@ -72,12 +72,14 @@ Spring Boot Actuator可以用来监控和管理Spring Boot应用，比如健康�
 ## 几个常用端点
 ### 1.health端点
 health端点是查看Spring Boot应用程序健康状况的端点，如果没有特殊设置，显示的信息就比较少。  
-可以通过在配置文件中设置`managemet.endpoint.health.show-details`来决定health端点的细节信息是否展示，有如下值：
-* never：细节信息详情永远都不展示
-* when-authorized：细节详情只对授权用户显示
-* always：细节详情显示给所有用户
+* management.health.defaults.enabled=true|false
+* management.health.<id>.enabled=true
+* managemet.endpoint.health.show-details：health端点的细节信息是否展示，有如下值：
+  * never：细节信息详情永远都不展示
+  * when-authorized：细节详情只对授权用户显示
+  * always：细节详情显示给所有用户
 
-health端点的内容是从实现HealthIndicator接口的bean中收集来的。  
+health端点的内容是通过HealthIndicatorRegistry从实现HealthIndicator接口的bean中收集来的。  
 可以实现自己的HealthIndicator，然后自定义检查逻辑并返回对应Health状态，Health中包含状态和详细描述信息。
 
     @Component
