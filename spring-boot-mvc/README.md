@@ -141,3 +141,29 @@ SpringMVC的自动配置在org.springframework.boot.autoconfigure.web.servlet.We
   * TomcatServletWebServerFactory
   * JettyServletWebServerFactory
   * UndertowServletWebServerFactory
+
+### 配置HTTPS支持
+服务端HTTPS支持   
+通过参数进⾏配置
+* server.port=8443
+* server.ssl.*
+  * server.ssl.key-store
+  * server.ssl.key-store-type，JKS或者PKCS12
+  * server.ssl.key-store-password=secret
+
+⽣成证书文件  
+命令：keytool -genkey -alias 别名 -storetype 仓库类型 -keyalg 算法 -keysize ⻓度 -keystore ⽂件名 -validity 有效期天数
+例子：keytool -genkey -alias springbucks -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore springbucks.p12 -validity 36
+* 仓库类型：JKS、JCEKS、PKCS12等
+* 算法：RSA、DSA等
+* 长度：如2048
+
+项目启动后命令行输入：curl -k -v https://localhost:8443/coffee/1 看下效果
+
+客户端HTTPS支持(示例见restful项目)
+* 配置HttpClient(>=4.4)
+  * SSLContextBuilder构造SSLContext
+  * setSSLHostnameVerifier(new NoopHostnameVerifier())，不去校验hostname
+* 配置RequestFactory
+  * HttpComponentsClientHttpRequestFactory
+    * setHttpClient()
