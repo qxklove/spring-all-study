@@ -167,3 +167,22 @@ SpringMVC的自动配置在org.springframework.boot.autoconfigure.web.servlet.We
 * 配置RequestFactory
   * HttpComponentsClientHttpRequestFactory
     * setHttpClient()
+  
+### 关闭Web容器
+* 控制依赖
+  * 不添加Web相关依赖
+* 配置方式
+  * spring.main.web-application-type=none
+* 编程⽅式，在调⽤SpringApplication的run()⽅法前设置WebApplicationType为NONE
+  * SpringApplication.setWebApplicationType(WebApplicationType.NONE)
+  * SpringApplicationBuilder.web(WebApplicationType.NONE)
+
+### 不同的Runner
+* ApplicationRunner
+  * 参数是ApplicationArguments
+* CommandLineRunner
+  * 参数是String[]
+  
+如果添加了多个Runner可以通过添加order注解或实现order接口来指定运行顺序
+
+返回码：ExitCodeGenerator
