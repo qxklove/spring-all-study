@@ -1,10 +1,10 @@
-package com.qxk.springall.springbootadmin;
+package com.qxk.springall.springcloudeurekaclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootAdminApplicationTests {
+class SpringCloudEurekaClientApplicationTests {
 
     @Test
     void contextLoads() {

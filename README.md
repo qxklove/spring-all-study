@@ -2,9 +2,10 @@
 
 本项目基于版本
 * Spring Boot：2.3.7.RELEASE
+* spring-cloud：Hoxton.SR1
 
 ## 目录
-### Spring使用
+### SpringBoot 使用
 * [spring-boot-config](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-config): SpringBoot配置
 * [spring-boot-actuator](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-actuator): SpringBoot监控
 * [spring-boot-datasource](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-datasource): SpringBoot配置单数据源
@@ -22,6 +23,9 @@
 * [spring-boot-session](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-session): SpringBoot session
 * [spring-boot-autoconfigure](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-autoconfigure): SpringBoot autoconfigure
 * [spring-boot-admin](https://github.com/qxklove/spring-all-study/tree/master/spring-boot-admin): SpringBoot admin
+
+### SpringCloud使用
+* [spring-cloud-eureka](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-eureka): SpringCloud eureka
 
 ### Spring的一些解析示例
 * [spring-context-hierarchy](https://github.com/qxklove/spring-all-study/tree/master/spring-context-hierarchy): Spring上下文的层次结构
