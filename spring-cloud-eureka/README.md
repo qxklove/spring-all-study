@@ -49,3 +49,16 @@ Bootstrap属性
   * spring.cloud.consul.host=localhost
   * spring.cloud.consul.port=8500
   * spring.cloud.consul.discovery.prefer-ip-address=true
+
+## 使⽤Spring Cloud LoadBalancer访问服务
+获得服务地址
+* EurekaClient.getNextServerFromEureka()，获取下一个注册的实例
+* DiscoveryClient.getInstances(String serviceId)，获取指定的服务id的注册的实例，DiscoveryClient是Spring提供的抽象，方便以后换注册中心
+
+Load Balancer Client  
+RestTemplate与WebClient  
+@LoadBalanced
+* 实际是通过ClientHttpRequestInterceptor实现的
+  * LoadBalancerInterceptor
+  * LoadBalancerClient
+    * RibbonLoadBalancerClient
