@@ -67,3 +67,14 @@ Bootstrap属性
   * spring.cloud.consul.host=localhost
   * spring.cloud.consul.port=8500
   * spring.cloud.consul.discovery.prefer-ip-address=true
+
+## Nacos
+* 动态服务配置
+* 服务发现和管理
+* 动态DNS服务
+
+### 使⽤Nacos作为服务注册中⼼
+* 引入spring-cloud-alibaba-dependencies
+  * spring-cloud-starter-alibaba-nacos-discovery
+* 配置spring.cloud.nacos.discovery.server-addr
+
