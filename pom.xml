@@ -42,6 +42,7 @@
 		<module>spring-boot-admin</module>
 
 		<module>spring-cloud-eureka</module>
+		<module>spring-cloud-feign</module>
 	</modules>
 
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->

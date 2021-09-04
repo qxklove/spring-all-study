@@ -1,6 +1,7 @@
 # Spring Cloud Eureka
 
-Eureka是在AWS上定位服务的REST服务。Eureka包含在Netflix的一个套件里。2.0版本已不再更新，所以不建议使用。
+Eureka是在AWS上定位服务的REST服务。Eureka包含在Netflix的一个开源套件里。2.0版本已不再更新，所以不建议使用。  
+Spring对Netflix套件的支持：Spring Cloud Netflix。
 
 ### 在本地启动⼀个简单的Eureka服务
 * 引入starter
@@ -55,9 +56,8 @@ Bootstrap属性
 * EurekaClient.getNextServerFromEureka()，获取下一个注册的实例
 * DiscoveryClient.getInstances(String serviceId)，获取指定的服务id的注册的实例，DiscoveryClient是Spring提供的抽象，方便以后换注册中心
 
-Load Balancer Client  
-RestTemplate与WebClient  
-@LoadBalanced
+Load Balancer Client 是通过配置RestTemplate与WebClient实现
+* RestTemplate Bean上加注解@LoadBalanced，@LoadBalanced为RestTemplate做了增强，URL中给了服务名，根据服务名到注册中心获取具体服务实例的列表，调用时选择其中一个示例替换进URL里，获得最终要调用的URL去执行调用。
 * 实际是通过ClientHttpRequestInterceptor实现的
   * LoadBalancerInterceptor
   * LoadBalancerClient
