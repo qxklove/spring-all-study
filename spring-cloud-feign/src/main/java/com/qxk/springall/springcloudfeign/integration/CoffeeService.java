@@ -11,12 +11,12 @@ import java.util.List;
 @FeignClient(name = "waiter-service", contextId = "coffee")
 // 不要在接口上加@RequestMapping
 public interface CoffeeService {
-    @GetMapping(path = "/coffee/", params = "!name")
+    @GetMapping(path = "coffee/", params = "!name")
     List<Coffee> getAll();
 
-    @GetMapping("/coffee/{id}")
+    @GetMapping("coffee/{id}")
     Coffee getById(@PathVariable Long id);
 
-    @GetMapping(path = "/coffee/", params = "name")
+    @GetMapping(path = "coffee/", params = "name")
     Coffee getByName(@RequestParam String name);
 }

@@ -29,6 +29,23 @@ Bootstrap属性
   * spring.application.name=应⽤名
   * 配置中心相关
 
+## SpringCloudCommons提供的抽象
+* 服务注册抽象：提供了ServiceRegistry抽象
+* 客户发现抽象：提供了DiscoveryClient抽象，LoadBalancerClient抽象
+
+以Eureka为例，⾃动向Eureka服务端注册ServiceRegistry
+* EurekaServiceRegistry
+* EurekaRegistration，注册信息
+* 自动配置
+  * EurekaClientAutoConfiguration
+  * EurekaAutoServiceRegistration
+    * SmartLifecycle
+
+## 使⽤Zookeeper作为注册中⼼
+* 引入spring-cloud-starter-zookeeper-discovery
+* 配置：spring.cloud.zookeeper.connect-string=localhost:2181
+
+在实践中，注册中⼼不能因为⾃身的任何原因破坏服务之间本身的可连通性。注册中⼼需要AP，而Zookeeper是CP
 
 ## Consul
 关键特性
@@ -50,15 +67,3 @@ Bootstrap属性
   * spring.cloud.consul.host=localhost
   * spring.cloud.consul.port=8500
   * spring.cloud.consul.discovery.prefer-ip-address=true
-
-## 使⽤Spring Cloud LoadBalancer访问服务
-获得服务地址
-* EurekaClient.getNextServerFromEureka()，获取下一个注册的实例
-* DiscoveryClient.getInstances(String serviceId)，获取指定的服务id的注册的实例，DiscoveryClient是Spring提供的抽象，方便以后换注册中心
-
-Load Balancer Client 是通过配置RestTemplate与WebClient实现
-* RestTemplate Bean上加注解@LoadBalanced，@LoadBalanced为RestTemplate做了增强，URL中给了服务名，根据服务名到注册中心获取具体服务实例的列表，调用时选择其中一个示例替换进URL里，获得最终要调用的URL去执行调用。
-* 实际是通过ClientHttpRequestInterceptor实现的
-  * LoadBalancerInterceptor
-  * LoadBalancerClient
-    * RibbonLoadBalancerClient

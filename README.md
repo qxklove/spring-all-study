@@ -26,6 +26,7 @@
 
 ### SpringCloud使用
 * [spring-cloud-eureka](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-eureka): SpringCloud eureka
+* [spring-cloud-ribbon](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-feign): SpringCloud ribbon
 * [spring-cloud-feign](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-feign): SpringCloud feign
 
 ### Spring的一些解析示例
