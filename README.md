@@ -28,6 +28,7 @@
 * [spring-cloud-eureka](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-eureka): SpringCloud eureka
 * [spring-cloud-ribbon](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-feign): SpringCloud ribbon
 * [spring-cloud-feign](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-feign): SpringCloud feign
+* [spring-cloud-hystrix](https://github.com/qxklove/spring-all-study/tree/master/spring-cloud-hystrix): SpringCloud hystrix
 
 ### Spring的一些解析示例
 * [spring-context-hierarchy](https://github.com/qxklove/spring-all-study/tree/master/spring-context-hierarchy): Spring上下文的层次结构
