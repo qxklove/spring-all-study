@@ -2,7 +2,7 @@
 
 本项目基于版本
 * Spring Boot：2.3.7.RELEASE
-* spring-cloud：Hoxton.SR1
+* spring-cloud：Hoxton.SR5
 
 ## 目录
 ### SpringBoot 使用
