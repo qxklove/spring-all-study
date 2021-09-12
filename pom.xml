@@ -45,6 +45,7 @@
 		<module>spring-cloud-ribbon</module>
 		<module>spring-cloud-feign</module>
 		<module>spring-cloud-hystrix</module>
+		<module>spring-cloud-config</module>
 	</modules>
 
 <!--如果不能指定parent是springBoot，可以用本段代码也能引入springBoot-->
