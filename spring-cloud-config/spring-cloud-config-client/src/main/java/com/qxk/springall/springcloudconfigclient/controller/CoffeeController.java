@@ -3,6 +3,7 @@ package com.qxk.springall.springcloudconfigclient.controller;
 import com.qxk.springall.springcloudconfigclient.controller.request.NewCoffeeRequest;
 import com.qxk.springall.springcloudconfigclient.model.Coffee;
 import com.qxk.springall.springcloudconfigclient.service.CoffeeService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -31,7 +32,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/coffee")
-//@RateLimiter(name = "coffee")
+@RateLimiter(name = "coffee")
 @Slf4j
 public class CoffeeController {
     @Autowired

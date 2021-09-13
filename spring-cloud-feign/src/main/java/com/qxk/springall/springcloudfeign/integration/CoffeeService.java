@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "waiter-service", contextId = "coffee")
+@FeignClient(name = "waiter-service", contextId = "coffee", path = "coffee")
 // 不要在接口上加@RequestMapping
 public interface CoffeeService {
-    @GetMapping(path = "coffee/", params = "!name")
+    @GetMapping(path = "/", params = "!name")
     List<Coffee> getAll();
 
-    @GetMapping("coffee/{id}")
+    @GetMapping("/{id}")
     Coffee getById(@PathVariable Long id);
 
-    @GetMapping(path = "coffee/", params = "name")
+    @GetMapping(path = "/", params = "name")
     Coffee getByName(@RequestParam String name);
 }

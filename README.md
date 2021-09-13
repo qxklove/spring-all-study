@@ -1,8 +1,8 @@
 # Spring相关的学习
 
 本项目基于版本
-* Spring Boot：2.3.7.RELEASE
-* spring-cloud：Hoxton.SR5
+* Spring Boot：2.1.4.RELEASE
+* spring-cloud：Greenwich.SR1
 
 ## 目录
 ### SpringBoot 使用
