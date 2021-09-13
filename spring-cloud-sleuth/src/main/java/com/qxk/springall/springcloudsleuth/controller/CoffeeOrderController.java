@@ -1,10 +1,11 @@
-package com.qxk.springall.springcloudconfigclient.controller;
+package com.qxk.springall.springcloudsleuth.controller;
 
-import com.qxk.springall.springcloudconfigclient.controller.request.NewOrderRequest;
-import com.qxk.springall.springcloudconfigclient.model.Coffee;
-import com.qxk.springall.springcloudconfigclient.model.CoffeeOrder;
-import com.qxk.springall.springcloudconfigclient.service.CoffeeOrderService;
-import com.qxk.springall.springcloudconfigclient.service.CoffeeService;
+import com.qxk.springall.springcloudsleuth.controller.request.NewOrderRequest;
+import com.qxk.springall.springcloudsleuth.controller.request.OrderStateRequest;
+import com.qxk.springall.springcloudsleuth.model.Coffee;
+import com.qxk.springall.springcloudsleuth.model.CoffeeOrder;
+import com.qxk.springall.springcloudsleuth.service.CoffeeOrderService;
+import com.qxk.springall.springcloudsleuth.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class CoffeeOrderController {
 //    public CoffeeOrderController(RateLimiterRegistry rateLimiterRegistry) {
 //        rateLimiter = rateLimiterRegistry.rateLimiter("order");
 //    }
-
+//
 //    @GetMapping("/{id}")
 //    public CoffeeOrder getOrder(@PathVariable("id") Long id) {
 //        CoffeeOrder order = null;
@@ -46,5 +47,14 @@ public class CoffeeOrderController {
         Coffee[] coffeeList = coffeeService.getCoffeeByName(newOrder.getItems())
                 .toArray(new Coffee[] {});
         return orderService.createOrder(newOrder.getCustomer(), coffeeList);
+    }
+
+    @PutMapping("/{id}")
+    public CoffeeOrder updateState(@PathVariable("id") Long id,
+                                   @RequestBody OrderStateRequest orderState) {
+        log.info("Update order {} with state {}", id, orderState);
+        CoffeeOrder order = orderService.get(id);
+        orderService.updateState(order, orderState.getState());
+        return order;
     }
 }
