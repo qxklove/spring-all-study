@@ -4,20 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.qxk.springall</groupId>
-        <artifactId>spring-all-study</artifactId>
+        <artifactId>spring-cloud-config</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.qxk.springall</groupId>
-    <artifactId>spring-cloud-config</artifactId>
+    <artifactId>spring-cloud-config-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-config</name>
-    <description>Demo project for Spring Cloud Config</description>
-    <packaging>pom</packaging>
+    <name>spring-cloud-config-server</name>
+    <description>Demo project for Spring Boot</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
     </dependencies>
 
